@@ -16,5 +16,6 @@ aig = { path = "../aig-rs", version = "0.3.0" }
 giputils = { path = "../giputils", version = "0.3.0" }
 
 [build-dependencies]
+cc = "1.2.20"
 cmake = "0.1.50"
 giputils = { path = "../giputils", version = "0.3.0" }
