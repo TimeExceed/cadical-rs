@@ -5,8 +5,6 @@ use std::fs;
 use std::path::{PathBuf, Path};
 
 fn main() -> Result<(), String> {
-    giputils::build::git_submodule_update()?;
-
     println!("cargo:rerun-if-changed=./bindings");
     println!("cargo:rerun-if-changed=./cadical");
     let cadical_cpps = collect_cpps(&[&Path::new("cadical/src")]);
