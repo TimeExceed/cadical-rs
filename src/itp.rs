@@ -96,21 +96,4 @@ impl Tracer for Interpolant {
         self.clauses.remove(&id);
     }
 
-    fn conclude_unsat(&mut self, conclusion: i32, p: &[usize]) {
-        if conclusion == 1 {
-            assert!(p.len() == 1);
-            self.aig.outputs.push(self.itp[&p[0]]);
-            let (aig, map) = self.aig.coi_refine();
-            self.aig = aig;
-            let map: GHashMap<Var, Var> = map.into_iter().map(|(k, v)| (v, k)).collect();
-            let ve = take(&mut self.var_edge);
-            for (v, e) in ve {
-                if let Some(e) = map.get(&e) {
-                    self.var_edge.insert(v, *e);
-                }
-            }
-        } else {
-            todo!();
-        }
-    }
 }
